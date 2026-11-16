@@ -1,83 +1,104 @@
-Function to find the speed of an object
 
-def speed(distance, time):
-return distance / time
+# PHYSICS FORMULA CALCULATOR
 
-Function to calculate the force of an object
+# Function 1: Speed = Distance / Time
+def calculate_speed():
+    distance = float(input("Enter distance (meters): "))
+    time = float(input("Enter time (seconds): "))
 
-def force(mass, acceleration):
-return mass * acceleration
+    speed = distance / time
+    print("Speed =", speed, "m/s")
 
-Function to calculate the weight of an object
 
-def weight(mass):
-return mass * 9.8
+# Function 2: Force = Mass × Acceleration
+def calculate_force():
+    mass = float(input("Enter mass (kg): "))
+    acceleration = float(input("Enter acceleration (m/s²): "))
 
-Function to calculate potential energy
+    force = mass * acceleration
+    print("Force =", force, "N")
 
-def potential_energy(mass, height):
-return mass * 9.8 * height
 
-Function to calculate pressure
+# Function 3: Density = Mass / Volume
+def calculate_density():
+    mass = float(input("Enter mass (kg): "))
+    volume = float(input("Enter volume (m³): "))
 
-def pressure(force, area):
-return force / area
+    density = mass / volume
+    print("Density =", density, "kg/m³")
 
-Main program
 
-def main():
-print("WELCOME TO PHYSICS CALCULATOR")
-print("--------------------------------")
-print("Select the calculation you want to perform:")
-print("1. Calculate Speed")
-print("2. Calculate Force")
-print("3. Calculate Weight")
-print("4. Calculate Potential Energy")
-print("5. Calculate Pressure")
+# Function 4: Work Done = Force × Distance
+def calculate_work():
+    force = float(input("Enter force (N): "))
+    distance = float(input("Enter distance (m): "))
 
-option = input("Enter option (1-5): ")
+    work = force * distance
+    print("Work Done =", work, "J")
 
-if option == "1":
-    d = float(input("Input distance in metres: "))
-    t = float(input("Input time in seconds: "))
 
-    if t <= 0:
-        print("Time must be greater than zero.")
+# Function 5: Weight = Mass × Gravity
+def calculate_weight():
+    mass = float(input("Enter mass (kg): "))
+    gravity = float(input("Enter gravitational acceleration (m/s²): "))
+
+    weight = mass * gravity
+    print("Weight =", weight, "N")
+
+
+# Main Program
+while True:
+
+    print("\n===== PHYSICS CALCULATOR =====")
+    print("1. Calculate Speed")
+    print("2. Calculate Force")
+    print("3. Calculate Density")
+    print("4. Calculate Work Done")
+    print("5. Calculate Weight")
+
+    choice = input("\nChoose a formula (1-5): ")
+
+    if choice == "1":
+        calculate_speed()
+
+    elif choice == "2":
+        calculate_force()
+
+    elif choice == "3":
+        calculate_density()
+
+    elif choice == "4":
+        calculate_work()
+
+    elif choice == "5":
+        calculate_weight()
+
     else:
-        result = speed(d, t)
-        print("Speed:", result, "m/s")
+        print("\nThe option you selected does not exist.")
 
-elif option == "2":
-    m = float(input("Input mass in kg: "))
-    a = float(input("Input acceleration in m/s²: "))
+        answer = input("Do you still want to calculate? (yes/no): ").lower()
 
-    result = force(m, a)
-    print("Force:", result, "N")
+        if answer == "yes":
+            continue
 
-elif option == "3":
-    m = float(input("Input mass in kg: "))
+        elif answer == "no":
+            print("Thank you for using the Physics Calculator!")
+            break
 
-    result = weight(m)
-    print("Weight:", result, "N")
+        else:
+            print("Invalid response. Program terminated.")
+            break
 
-elif option == "4":
-    m = float(input("Input mass in kg: "))
-    h = float(input("Input height in metres: "))
+    # Ask whether the user wants another calculation
+    answer = input("\nDo you want to perform another calculation? (yes/no): ").lower()
 
-    result = potential_energy(m, h)
-    print("Potential Energy:", result, "J")
+    if answer == "no":
+        print("Thank you for using the Physics Calculator!")
+        break
 
-elif option == "5":
-    f = float(input("Input force in Newtons: "))
-    ar = float(input("Input area in square metres: "))
+    elif answer == "yes":
+        continue
 
-    if ar <= 0:
-        print("Area must be greater than zero.")
     else:
-        result = pressure(f, ar)
-        print("Pressure:", result, "Pa")
-
-else:
-    print("Wrong selection! Please choose a number from 1 to 5.")
-
-main()
+        print("Invalid response. Program terminated.")
+        break
